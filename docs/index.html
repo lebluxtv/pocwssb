@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Streamer.bot PoC — DoAction générique</title>
+  <title>Streamer.bot PoC — DoAction (ID ou Nom)</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@streamerbot/client/dist/streamerbot-client.umd.min.js"></script>
 </head>
 <body>
   <main class="container">
-    <h1>PoC — HTML/CSS/JS → Streamer.bot (DoAction générique)</h1>
+    <h1>PoC — HTML/CSS/JS → Streamer.bot (DoAction par ID ou Nom)</h1>
 
     <!-- Connexion -->
     <section class="card">
       <h2>Connexion WebSocket</h2>
-
       <form id="conn-form" autocomplete="off">
         <div class="grid">
           <label>Host
@@ -28,27 +27,36 @@
                    placeholder="(laisser vide si aucun)" autocomplete="new-password" />
           </label>
         </div>
-
         <button id="btn-connect" type="submit">Se connecter</button>
         <span id="conn-status" class="dot off">Déconnecté</span>
       </form>
+
+      <p class="hint">
+        ⚠️ Si cette page est servie en <strong>HTTPS</strong> (ex: GitHub Pages), les connexions
+        <code>ws://</code> seront <em>bloquées</em> par le navigateur (mixed content).
+        Teste en HTTP local ou utilise un proxy <code>wss://</code>.
+      </p>
     </section>
 
     <!-- DoAction -->
     <section class="card">
       <h2>DoAction (args génériques)</h2>
       <div class="grid">
-        <label>ID de l'action (GUID ou nom exact)
-          <input id="action-id" type="text"
-                 placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+        <label>ID ou Nom exact de l'action
+          <input id="action-input" type="text" placeholder="GUID ou NomExactDeTonAction" />
         </label>
         <label>Payload (objet JSON)
           <textarea id="payload-json" rows="10" spellcheck="false">{
-  "exampleString": "Hello",
-  "exampleNumber": 42,
-  "nested": { "foo": "bar" },
-  "array": [1,2,3]
+  "message": "Hello from the web client",
+  "value": 42,
+  "nested": { "foo": "bar" }
 }</textarea>
+        </label>
+      </div>
+      <div class="row">
+        <label class="inline">
+          <input id="case-insensitive" type="checkbox" />
+          Correspondance du nom insensible à la casse
         </label>
       </div>
       <button id="btn-doaction" disabled>Envoyer DoAction</button>
