@@ -10,6 +10,8 @@ h2{font-size:16px;margin:0 0 12px}
 .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:12px}
 label{display:grid;gap:6px;color:var(--muted);font-weight:600}
+.row{display:flex;align-items:center;gap:12px;margin:8px 0 12px}
+.inline{display:flex;align-items:center;gap:8px;color:var(--muted);font-weight:600}
 input,textarea{background:#0c0f14;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px;outline:none}
 input:focus,textarea:focus{border-color:var(--accent)}
 button{background:var(--accent);color:#06101e;font-weight:700;padding:10px 14px;border:none;border-radius:10px;cursor:pointer}
@@ -19,3 +21,5 @@ button[disabled]{opacity:.5;cursor:not-allowed}
 .dot.on{color:var(--ok);border-color:#135b3f}
 .dot.err{color:var(--err);border-color:#5b1313}
 .dot.off{color:var(--muted)}
+.hint{color:var(--muted);font-size:12px;margin-top:8px}
+code{background:#0c0f14;border:1px solid var(--border);border-radius:6px;padding:0 6px}
