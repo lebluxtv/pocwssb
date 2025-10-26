@@ -11,40 +11,50 @@
   <main class="container">
     <h1>PoC — HTML/CSS/JS → Streamer.bot (DoAction générique)</h1>
 
+    <!-- Connexion -->
     <section class="card">
       <h2>Connexion WebSocket</h2>
-      <div class="grid">
-        <label>Host
-          <input id="host" type="text" value="127.0.0.1" />
-        </label>
-        <label>Port
-          <input id="port" type="number" value="8080" min="1" max="65535" />
-        </label>
-        <label>Mot de passe (si configuré)
-          <input id="password" type="password" placeholder="(laisser vide si aucun)" />
-        </label>
-      </div>
-      <button id="btn-connect">Se connecter</button>
-      <span id="conn-status" class="dot off">Déconnecté</span>
+
+      <form id="conn-form" autocomplete="off">
+        <div class="grid">
+          <label>Host
+            <input id="host" name="host" type="text" value="127.0.0.1" />
+          </label>
+          <label>Port
+            <input id="port" name="port" type="number" value="8080" min="1" max="65535" />
+          </label>
+          <label>Mot de passe (si configuré)
+            <input id="password" name="password" type="password"
+                   placeholder="(laisser vide si aucun)" autocomplete="new-password" />
+          </label>
+        </div>
+
+        <button id="btn-connect" type="submit">Se connecter</button>
+        <span id="conn-status" class="dot off">Déconnecté</span>
+      </form>
     </section>
 
+    <!-- DoAction -->
     <section class="card">
       <h2>DoAction (args génériques)</h2>
       <div class="grid">
         <label>ID de l'action (GUID ou nom exact)
-          <input id="action-id" type="text" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+          <input id="action-id" type="text"
+                 placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
         </label>
         <label>Payload (objet JSON)
           <textarea id="payload-json" rows="10" spellcheck="false">{
-  "anyKey": "anyValue",
-  "nested": { "foo": 1, "bar": [2,3,4] },
-  "flags": { "dryRun": true, "silent": false }
+  "exampleString": "Hello",
+  "exampleNumber": 42,
+  "nested": { "foo": "bar" },
+  "array": [1,2,3]
 }</textarea>
         </label>
       </div>
       <button id="btn-doaction" disabled>Envoyer DoAction</button>
     </section>
 
+    <!-- Logs -->
     <section class="card">
       <h2>Log</h2>
       <pre id="log" class="log"></pre>
