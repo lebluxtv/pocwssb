@@ -70,7 +70,7 @@
     if (pwdField) savePwd(pwdField);
 
     // choose scheme according to page protocol to avoid mixed content
-    const scheme = (location.protocol === 'https:') ? 'wss' : 'ws';
+    // const scheme = (location.protocol === 'https:') ? 'wss' : 'ws';
 
     // if existing client, try to disconnect cleanly
     if (client && typeof client.disconnect === 'function') {
@@ -88,7 +88,7 @@
         endpoint: '/',        // explicit endpoint like jbs_dashboard
         password,
         subscribe: '*',       // auto-subscribe to everything (helpful)
-        scheme,               // 'wss' if page served via https
+        //scheme,               // 'wss' if page served via https
         immediate: true,      // connect immediately
         autoReconnect: true,
         retries: -1,
