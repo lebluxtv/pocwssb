@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Streamer.bot PoC — DoAction générique</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@streamerbot/client/dist/streamerbot-client.umd.min.js"></script>
+</head>
+<body>
+  <main class="container">
+    <h1>PoC — HTML/CSS/JS → Streamer.bot (DoAction générique)</h1>
+
+    <section class="card">
+      <h2>Connexion WebSocket</h2>
+      <div class="grid">
+        <label>Host
+          <input id="host" type="text" value="127.0.0.1" />
+        </label>
+        <label>Port
+          <input id="port" type="number" value="8080" min="1" max="65535" />
+        </label>
+        <label>Mot de passe (si configuré)
+          <input id="password" type="password" placeholder="(laisser vide si aucun)" />
+        </label>
+      </div>
+      <button id="btn-connect">Se connecter</button>
+      <span id="conn-status" class="dot off">Déconnecté</span>
+    </section>
+
+    <section class="card">
+      <h2>DoAction (args génériques)</h2>
+      <div class="grid">
+        <label>ID de l'action (GUID ou nom exact)
+          <input id="action-id" type="text" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+        </label>
+        <label>Payload (objet JSON)
+          <textarea id="payload-json" rows="10" spellcheck="false">{
+  "anyKey": "anyValue",
+  "nested": { "foo": 1, "bar": [2,3,4] },
+  "flags": { "dryRun": true, "silent": false }
+}</textarea>
+        </label>
+      </div>
+      <button id="btn-doaction" disabled>Envoyer DoAction</button>
+    </section>
+
+    <section class="card">
+      <h2>Log</h2>
+      <pre id="log" class="log"></pre>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
